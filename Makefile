@@ -1,4 +1,5 @@
 modname := cpuctl
+version := 0.1
 KVERSION := $(shell uname -r)
 KDIR := /lib/modules/$(KVERSION)/build
 PWD := "$$(pwd)"
@@ -20,6 +21,9 @@ install:
 	mkdir -p /lib/modules/$(KVERSION)/misc/$(modname)
 	install -m 0755 -o root -g root $(modname).ko /lib/modules/$(KVERSION)/misc/$(modname)
 	depmod -a
+
+install-dkms:
+
 
 uninstall:
 	rm /lib/modules/$(KVERSION)/misc/$(modname)/$(modname).ko
